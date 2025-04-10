@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { FaFeatherAlt, FaBook, FaHandsHelping } from 'react-icons/fa';
+import DonateBanner from '../Hero/DonateBanner';
 
 export default function ActionSection() {
   const cards = [
@@ -6,69 +8,69 @@ export default function ActionSection() {
       title: "Endangered Species",
       tag: "SPECIES",
       description: "Discover India's most threatened bird species",
-      image: "/species-card.webp",
-      link: "/species"
+      icon: <FaFeatherAlt className="w-8 h-8 text-green-600" />,
+      link: "/species",
+      bgColor: "bg-green-50",
+      textColor: "text-green-600"
     },
     {
-      title: "Conservation Efforts",
-      tag: "ARTICLE",
-      description: "Latest research on habitat protection",
-      image: "/article-card.webp",
-      link: "/articles"
+      title: "Conservation Articles",
+      tag: "ARTICLES",
+      description: "Latest articles on habitat protection",
+      icon: <FaBook className="w-8 h-8 text-blue-600" />,
+      link: "/articles",
+      bgColor: "bg-blue-50",
+      textColor: "text-blue-600"
     },
     {
       title: "Support Our Mission",
       tag: "ACTION",
       description: "Help protect avian biodiversity today",
-      image: "/donate-card.webp",
-      link: "/donate"
+      icon: <FaHandsHelping className="w-8 h-8 text-amber-600" />,
+      link: "/donate",
+      bgColor: "bg-amber-50",
+      textColor: "text-amber-600"
     }
   ];
 
   return (
-    <section className="relative py-24">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-[url('/home-banner-1.jpg')] bg-cover bg-center brightness-90"
-        aria-hidden="true"
-      />
-      
-      {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-semibold font-mono text-black mb-12">Our Work in Action</h2>
+    <section className="pt-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold text-gray-900 mb-5">Our Work in Action</h2>
+          <p className="text-2xl text-gray-600 max-w-3xl mx-auto">
+          From wetlands to woodlands, see how we’re preserving India’s avian heritage—combining research, education, and community-led conservation.
+          </p>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {cards.map((card, index) => (
             <Link 
               to={card.link} 
               key={index}
-              className="group bg-white/90 backdrop-blur-sm rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:bg-white"
+              className={`group p-8 rounded-2xl ${card.bgColor} hover:shadow-lg transition-all duration-300 border border-gray-200`}
             >
-              <div className="h-48 overflow-hidden">
-                <img 
-                  src={card.image} 
-                  alt={card.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div className="p-4 rounded-full w-max mb-6">
+                {card.icon}
               </div>
-              <div className="p-6">
-                <div className="flex items-center mb-2">
-                  <span className="text-black font-semibold text-secondary uppercase tracking-wider">
-                    {card.tag}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-primary transition-colors">
+              <div className="mb-4">
+                <span className={`text-sm font-semibold ${card.textColor} uppercase tracking-wider`}>
+                  {card.tag}
+                </span>
+                <h3 className="text-2xl font-bold text-gray-900 mt-2 mb-3">
                   {card.title}
                 </h3>
-                <p className="text-gray-600 mb-4">{card.description}</p>
-                <span className="text-gray-600 font-medium group-hover:underline">
-                  Learn more →
-                </span>
+                <p className="text-gray-600">{card.description}</p>
               </div>
+              <span className={`inline-flex items-center ${card.textColor} font-medium group-hover:underline`}>
+                Learn more →
+              </span>
             </Link>
           ))}
         </div>
+        
       </div>
+      <DonateBanner />  
     </section>
   );
 }
