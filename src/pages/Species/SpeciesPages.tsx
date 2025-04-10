@@ -77,8 +77,8 @@ export default function SpeciesPage() {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Search and Filter */}
-        <div className="mb-12 bg-white p-6 rounded-lg shadow-md">
-          <div className="flex flex-col md:flex-row gap-4">
+        <div className="mb-12 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div className="flex flex-col md:flex-row gap-6 ">
             <div className="relative flex-grow">
               <Search className="absolute left-3 top-3.5 h-5 w-5 text-gray-400" />
               <input
